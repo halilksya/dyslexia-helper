@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="DyslexiaHelper.Android/DyslexiaHelper.Android.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="DyslexiaHelper.Core/DyslexiaHelper.Core.csproj" />
+  <Project Path="DyslexiaHelper.Desktop/DyslexiaHelper.Desktop.csproj" />
+  <Project Path="DyslexiaHelper/DyslexiaHelper.csproj" />
+</Solution>
