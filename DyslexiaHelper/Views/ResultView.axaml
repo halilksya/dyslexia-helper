@@ -2,7 +2,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:DyslexiaHelper.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="DyslexiaHelper.Views.ResultView">
-  Welcome to Avalonia!
+             x:Class="DyslexiaHelper.Views.ResultView"
+             x:DataType="vm:ResultViewModel">
+    <StackPanel Margin="24" Spacing="12">
+        <TextBlock Text="Result" FontSize="24" />
+        <Image Source="{Binding SourceImage}" MaxHeight="300" Stretch="Uniform" />
+        <Button Content="Ayarlar" Command="{Binding OpenSettingsCommand}" />
+        <Button Content="Geri" Command="{Binding GoBackCommand}" />
+    </StackPanel>
 </UserControl>
