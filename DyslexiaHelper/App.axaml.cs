@@ -8,6 +8,7 @@ namespace DyslexiaHelper;
 
 public partial class App : Application
 {
+    public static string ModelDirectory { get; set; } = System.IO.Path.Combine(System.AppContext.BaseDirectory, "models", "v5");
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);

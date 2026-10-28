@@ -7,10 +7,8 @@ public sealed class TextRecognizer : IDisposable
 {
     private readonly RapidOcr _ocrEngine;
 
-    public TextRecognizer()
+    public TextRecognizer(string modelDirectory)
     {
-        var modelDirectory = Path.Combine(AppContext.BaseDirectory, "models", "v5");
-
         _ocrEngine = new RapidOcr();
         _ocrEngine.InitModels(
             Path.Combine(modelDirectory, RapidOcr.DefaultDetModelPath),

@@ -8,7 +8,7 @@ public partial class MainViewModel : ViewModelBase
 {
     private readonly Stack<ViewModelBase> _history = new();
 
-    public TextRecognizer TextRecognizer { get; } = new();
+    public TextRecognizer TextRecognizer { get; } = new(App.ModelDirectory);
 
     [ObservableProperty]
     private ViewModelBase? _currentPage;
