@@ -26,7 +26,7 @@ public sealed class TextRecognizer : IDisposable
                 throw new ArgumentException("Image could not be decoded", nameof(imageBytes));
             
             var result = _ocrEngine.Detect(bitmap, RapidOcrOptions.Default);
-            return result.StrRes;
+            return ReadingOrder.Join(result.TextBlocks);
         });
     }
 
