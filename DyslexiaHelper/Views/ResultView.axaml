@@ -6,10 +6,14 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="DyslexiaHelper.Views.ResultView"
              x:DataType="vm:ResultViewModel">
-    <StackPanel Margin="24" Spacing="12">
-        <TextBlock Text="Result" FontSize="24" />
-        <Image Source="{Binding SourceImage}" MaxHeight="300" Stretch="Uniform" />
-        <Button Content="Ayarlar" Command="{Binding OpenSettingsCommand}" />
-        <Button Content="Geri" Command="{Binding GoBackCommand}" />
-    </StackPanel>
+    <ScrollViewer>
+        <StackPanel Margin="24" Spacing="12">
+            <TextBlock Text="Result" FontSize="24" />
+            <Image Source="{Binding SourceImage}" MaxHeight="300" Stretch="Uniform" />
+            <ProgressBar IsIndeterminate="True" IsVisible="{Binding IsRecognizing}" />
+            <SelectableTextBlock Text="{Binding RecognizedText}" TextWrapping="Wrap" FontSize="18" />
+            <Button Content="Ayarlar" Command="{Binding OpenSettingsCommand}" />
+            <Button Content="Geri" Command="{Binding GoBackCommand}" />
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>

@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using CommunityToolkit.Mvvm.ComponentModel;
+using DyslexiaHelper.Core.Recognition;
 
 namespace DyslexiaHelper.ViewModels;
 
 public partial class MainViewModel : ViewModelBase
 {
     private readonly Stack<ViewModelBase> _history = new();
+
+    public TextRecognizer TextRecognizer { get; } = new();
 
     [ObservableProperty]
     private ViewModelBase? _currentPage;
