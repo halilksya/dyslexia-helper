@@ -26,8 +26,12 @@ public partial class CaptureViewModel : ViewModelBase
         var normalizedBytes = await Task.Run(() => ImageNormalizer.Normalize(imageBytes));
 
         _imageBytes = normalizedBytes;
+        var previousImage = PreviewImage;
+
         using var memoryStream = new MemoryStream(normalizedBytes);
         PreviewImage = new Bitmap(memoryStream);
+
+        previousImage?.Dispose();
     }
 
     public bool CanCapturePhoto => App.CameraService is not null;
@@ -55,6 +59,6 @@ public partial class CaptureViewModel : ViewModelBase
     [RelayCommand]
     private void OpenSettings()
     {
-        _mainViewModel.NavigateTo(new SettingsViewModel(_mainViewModel));
+        _mainViewModel.NavigateTo(new ResultViewModel(_mainViewModel, _imageBytes!, PreviewImage!));
     }
 }

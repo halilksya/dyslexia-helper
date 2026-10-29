@@ -22,11 +22,10 @@ public partial class ResultViewModel : ViewModelBase
     [ObservableProperty]
     private bool _isRecognizing;
 
-    public ResultViewModel(MainViewModel mainViewModel, byte[] imageBytes)
+    public ResultViewModel(MainViewModel mainViewModel, byte[] imageBytes, Bitmap sourceImage)
     {
         _mainViewModel = mainViewModel;
-        using var memoryStream = new MemoryStream(imageBytes);
-        SourceImage = new Bitmap(memoryStream);
+        SourceImage = sourceImage;
         _ = RecognizeAsync(imageBytes);
     }
 
@@ -39,7 +38,7 @@ public partial class ResultViewModel : ViewModelBase
         }
         catch (Exception exception)
         {
-            RecognizedText = $"Recognition failed: {exception.Message}";
+            RecognizedText = $"Metin tanıma başarısız: {exception.Message}";
         }
         finally
         {
