@@ -21,7 +21,7 @@ public static class ImageNormalizer
     
     private static SKBitmap ApplyOrientation(SKBitmap source, SKEncodedOrigin origin)
     {
-        var(degress, swapSides) = origin switch
+        var(degrees, swapSides) = origin switch
         {
             SKEncodedOrigin.RightTop => (90, true),
             SKEncodedOrigin.BottomRight => (180, false),
@@ -29,7 +29,7 @@ public static class ImageNormalizer
             _ => (0, false)
         };
 
-        if(degress == 0)
+        if(degrees == 0)
             return source.Copy();
 
         var width = swapSides ? source.Height : source.Width;
@@ -38,7 +38,7 @@ public static class ImageNormalizer
 
         using var canvas = new SKCanvas(rotated);
         canvas.Translate(width / 2f, height / 2f);
-        canvas.RotateDegrees(degress);
+        canvas.RotateDegrees(degrees);
         canvas.Translate(-source.Width / 2f, -source.Height / 2f);
         canvas.DrawBitmap(source, 0, 0);
 

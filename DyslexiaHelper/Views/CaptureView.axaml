@@ -8,6 +8,7 @@
              x:DataType="vm:CaptureViewModel">
      <StackPanel Margin="24" Spacing="12">
         <TextBlock Text="Capture" FontSize="24" />
+        <Button Content="Fotoğraf çek" Command="{Binding CapturePhotoCommand}" IsVisible="{Binding CanCapturePhoto}" />
         <Button Content="Fotoğraf seç" Click="OnPickImageClick" />
         <Image Source="{Binding PreviewImage}" MaxHeight="300" Stretch="Uniform" />
         <Button Content="Devam" Command="{Binding OpenResultCommand}" />

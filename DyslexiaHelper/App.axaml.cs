@@ -3,12 +3,15 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using DyslexiaHelper.ViewModels;
 using DyslexiaHelper.Views;
+using DyslexiaHelper.Services;
 
 namespace DyslexiaHelper;
 
 public partial class App : Application
 {
     public static string ModelDirectory { get; set; } = System.IO.Path.Combine(System.AppContext.BaseDirectory, "models", "v5");
+
+    public static ICameraService? CameraService { get; set; }
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);

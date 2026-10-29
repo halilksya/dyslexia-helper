@@ -1,10 +1,8 @@
 using System.IO;
-using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 using DyslexiaHelper.ViewModels;
-using DyslexiaHelper.Core.Imaging;
 
 namespace DyslexiaHelper.Views;
 
@@ -38,7 +36,6 @@ public partial class CaptureView : UserControl
         using var memoryStream = new MemoryStream();
         await fileStream.CopyToAsync(memoryStream);
 
-        var normalizedBytes = await Task.Run(() => ImageNormalizer.Normalize(memoryStream.ToArray()));
-        viewModel.LoadImage(normalizedBytes);
+        await viewModel.LoadImageAsync(memoryStream.ToArray());
     }
 }
