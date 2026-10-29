@@ -53,12 +53,12 @@ public partial class CaptureViewModel : ViewModelBase
     [RelayCommand(CanExecute = nameof(CanOpenResult))]
     private void OpenResult()
     {
-        _mainViewModel.NavigateTo(new ResultViewModel(_mainViewModel, _imageBytes!));
+        _mainViewModel.NavigateTo(new ResultViewModel(_mainViewModel, _imageBytes!, PreviewImage!));
     }
 
     [RelayCommand]
     private void OpenSettings()
     {
-        _mainViewModel.NavigateTo(new ResultViewModel(_mainViewModel, _imageBytes!, PreviewImage!));
+        _mainViewModel.NavigateTo(new SettingsViewModel(_mainViewModel));
     }
 }
