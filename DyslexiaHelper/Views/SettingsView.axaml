@@ -3,11 +3,51 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:DyslexiaHelper.ViewModels"
+             xmlns:models="using:DyslexiaHelper.Models"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="DyslexiaHelper.Views.SettingsView"
              x:DataType="vm:SettingsViewModel">
-    <StackPanel Margin="24" Spacing="12">
-        <TextBlock Text="Settings" FontSize="24" />
-        <Button Content="Geri" Command="{Binding GoBackCommand}" />
-    </StackPanel>
+    <ScrollViewer>
+        <StackPanel Margin="24" Spacing="16">
+            <TextBlock Text="Ayarlar" FontSize="24" />
+
+            <Border Background="{Binding Settings.BackgroundBrush}" CornerRadius="12" Padding="20">
+                <TextBlock Text="Örnek metin: Işık hızı saniyede yaklaşık 300.000 kilometredir."
+                           TextWrapping="Wrap"
+                           FontFamily="{StaticResource ReadingFont}"
+                           FontSize="{Binding Settings.FontSize}"
+                           LetterSpacing="{Binding Settings.LetterSpacing}"
+                           LineHeight="{Binding Settings.LineHeight}"
+                           Foreground="{Binding Settings.ForegroundBrush}" />
+            </Border>
+
+            <TextBlock Text="{Binding Settings.FontSize, StringFormat='Yazı boyutu: {0:0}'}" />
+            <Slider Minimum="16" Maximum="40" TickFrequency="1" IsSnapToTickEnabled="True"
+                    Value="{Binding Settings.FontSize, Mode=TwoWay}" />
+
+            <TextBlock Text="{Binding Settings.LetterSpacing, StringFormat='Harf aralığı: {0:0.0}'}" />
+            <Slider Minimum="0" Maximum="4" TickFrequency="0.5" IsSnapToTickEnabled="True"
+                    Value="{Binding Settings.LetterSpacing, Mode=TwoWay}" />
+
+            <TextBlock Text="{Binding Settings.LineSpacingFactor, StringFormat='Satır aralığı: {0:0.0}'}" />
+            <Slider Minimum="1" Maximum="2.5" TickFrequency="0.1" IsSnapToTickEnabled="True"
+                    Value="{Binding Settings.LineSpacingFactor, Mode=TwoWay}" />
+
+            <TextBlock Text="Renk teması" />
+            <ListBox ItemsSource="{Binding Themes}"
+                     SelectedItem="{Binding Settings.SelectedTheme, Mode=TwoWay}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate x:DataType="models:ReadingTheme">
+                        <Border Background="{Binding Background}" CornerRadius="8" Padding="12">
+                            <TextBlock Text="{Binding Name}"
+                                       Foreground="{Binding Foreground}"
+                                       FontFamily="{StaticResource ReadingFont}" />
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <Button Content="Geri" Command="{Binding GoBackCommand}" />
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>

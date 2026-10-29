@@ -9,9 +9,17 @@
     <ScrollViewer>
         <StackPanel Margin="24" Spacing="12">
             <TextBlock Text="Result" FontSize="24" />
-            <Image Source="{Binding SourceImage}" MaxHeight="300" Stretch="Uniform" />
+            <Image Source="{Binding SourceImage}" MaxHeight="200" Stretch="Uniform" />
             <ProgressBar IsIndeterminate="True" IsVisible="{Binding IsRecognizing}" />
-            <SelectableTextBlock Text="{Binding RecognizedText}" TextWrapping="Wrap" FontSize="18" />
+            <Border Background="{Binding Settings.BackgroundBrush}" CornerRadius="12" Padding="20">
+                <SelectableTextBlock Text="{Binding RecognizedText}"
+                                     TextWrapping="Wrap"
+                                     FontFamily="{StaticResource ReadingFont}"
+                                     FontSize="{Binding Settings.FontSize}"
+                                     LetterSpacing="{Binding Settings.LetterSpacing}"
+                                     LineHeight="{Binding Settings.LineHeight}"
+                                     Foreground="{Binding Settings.ForegroundBrush}" />
+            </Border>
             <Button Content="Ayarlar" Command="{Binding OpenSettingsCommand}" />
             <Button Content="Geri" Command="{Binding GoBackCommand}" />
         </StackPanel>

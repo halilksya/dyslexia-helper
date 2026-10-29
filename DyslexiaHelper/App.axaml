@@ -8,7 +8,9 @@
     <Application.DataTemplates>
         <local:ViewLocator />
     </Application.DataTemplates>
-
+    <Application.Resources>
+        <FontFamily x:Key="ReadingFont">avares://DyslexiaHelper/Assets/Fonts#Lexend</FontFamily>
+    </Application.Resources>
     <Application.Styles>
         <FluentTheme />
     </Application.Styles>

@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using System.IO;
 using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.Input;
+using DyslexiaHelper.Models;
 
 namespace DyslexiaHelper.ViewModels;
 
@@ -12,6 +13,8 @@ public partial class ResultViewModel : ViewModelBase
     private readonly MainViewModel _mainViewModel;
 
     public Bitmap SourceImage { get;}
+
+    public ReadingSettings Settings => _mainViewModel.ReadingSettings;
 
     [ObservableProperty]
     private string _recognizedText = string.Empty;
