@@ -4,7 +4,7 @@ namespace DyslexiaHelper.Services;
 
 public interface ICameraService
 {
-    Task<byte[]> CapturePhotoAsync();
+    Task<byte[]?> CapturePhotoAsync();
 }
 
 
